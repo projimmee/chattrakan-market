@@ -47,11 +47,10 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
-  <script>
-    // โหลดและแสดงร้านค้าในหน้าหลัก
+  <script type="module" src="app.js"></script>
+  <script type="module">
     document.addEventListener('DOMContentLoaded', () => {
-      renderShops();
+      if (window.renderShops) window.renderShops();
     });
   </script>
 </body>
