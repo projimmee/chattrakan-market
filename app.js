@@ -23,15 +23,22 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-import { firebaseConfig, isFirebaseConfigured } from "./firebase-config.js";
+import * as firebaseConfigModule from "./firebase-config.js";
+
+const firebaseConfig = firebaseConfigModule.firebaseConfig;
+const isFirebaseConfigured = firebaseConfigModule.isFirebaseConfigured;
 
 // ===== Firebase Init =====
 let app, auth, db;
 
-if (isFirebaseConfigured) {
-  app = initializeApp(firebaseConfig);
-  auth = getAuth(app);
-  db = getFirestore(app);
+if (isFirebaseConfigured && firebaseConfig) {
+  try {
+    app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+    db = getFirestore(app);
+  } catch (err) {
+    console.error("Firebase init error:", err);
+  }
 } else {
   console.warn("⚠️ ยังไม่ได้ตั้งค่า Firebase ในไฟล์ firebase-config.js");
 }
