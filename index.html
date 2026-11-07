@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ตลาดนัดออนไลน์ อำเภอชาติตระการ</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">🛒</span>
+        <div>
+          <h1>ตลาดนัดออนไลน์</h1>
+          <p>อำเภอชาติตระการ จังหวัดพิษณุโลก</p>
+        </div>
+      </div>
+      <a href="admin.html" class="admin-btn" title="จัดการร้านค้า">⚙️ จัดการ</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>ร้านค้าในชุมชน</h2>
+      <p>เลือกดูร้านค้าท้องถิ่น ออนไลน์ได้ง่าย ๆ แค่คลิก</p>
+    </section>
+
+    <div id="shop-list" class="shop-grid">
+      <!-- ร้านค้าจะถูกโหลดที่นี่ด้วย JavaScript -->
+    </div>
+
+    <div id="empty-state" class="empty-state" style="display: none;">
+      <div class="empty-icon">🏪</div>
+      <h3>ยังไม่มีร้านค้า</h3>
+      <p>ไปที่หน้า <a href="admin.html">จัดการร้านค้า</a> เพื่อเพิ่มร้านค้าแรก</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>ตลาดนัดออนไลน์ อำเภอชาติตระการ © 2026</p>
+      <p class="footer-note">ข้อมูลร้านค้าสามารถแก้ไขได้ผ่านหน้า Admin</p>
+    </div>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.renderShops) window.renderShops();
+    });
+  </script>
+</body>
+</html>

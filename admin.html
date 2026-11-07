@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>จัดการร้านค้า | ตลาดนัดออนไลน์ อำเภอชาติตระการ</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- ===== หน้า Login ===== -->
+  <div id="login-section" class="login-section" style="display: none;">
+    <div class="login-card">
+      <div class="login-header">
+        <span class="logo-icon">🔒</span>
+        <h1>เข้าสู่ระบบ Admin</h1>
+        <p>ตลาดนัดออนไลน์ อำเภอชาติตระการ</p>
+      </div>
+
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="login-email">อีเมล</label>
+          <input type="email" id="login-email" placeholder="admin@example.com" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="login-password">รหัสผ่าน</label>
+          <input type="password" id="login-password" placeholder="••••••••" required autocomplete="current-password" />
+        </div>
+        <p id="login-error" class="login-error"></p>
+        <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
+      </form>
+
+      <a href="index.html" class="back-link">← กลับหน้าหลัก</a>
+    </div>
+  </div>
+
+  <!-- ===== เนื้อหา Admin (หลัง Login) ===== -->
+  <div id="admin-content" style="display: none;">
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <span class="logo-icon">⚙️</span>
+          <div>
+            <h1>จัดการร้านค้า</h1>
+            <p>ตลาดนัดออนไลน์ อำเภอชาติตระการ</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <span id="user-email" class="user-email"></span>
+          <button type="button" id="logout-btn" class="admin-btn">ออกจากระบบ</button>
+          <a href="index.html" class="admin-btn">← หน้าหลัก</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container admin-page">
+      <section class="admin-form-section">
+        <h2 id="form-title">เพิ่มร้านค้าใหม่</h2>
+        <form id="shop-form" class="shop-form">
+          <input type="hidden" id="shop-id" />
+          <input type="hidden" id="shop-icon" value="🛒" />
+
+          <div class="form-group">
+            <label for="shop-name">ชื่อร้าน *</label>
+            <input type="text" id="shop-name" placeholder="เช่น ร้านป้าสมจิตร ผลไม้สด" required />
+          </div>
+
+          <div class="form-group">
+            <label>ไอคอน / รูปภาพ</label>
+            <select id="shop-icon-type">
+              <option value="emoji">ใช้ Emoji</option>
+              <option value="url">ใช้ URL รูปภาพ</option>
+              <option value="file">อัปโหลดรูป (Base64)</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="emoji-url-group">
+            <label for="shop-icon-text">Emoji หรือ URL</label>
+            <input type="text" id="shop-icon-text" placeholder="🛒 หรือวางลิงก์รูปภาพ" value="🛒"
+                   oninput="document.getElementById('shop-icon').value = this.value" />
+            <small>แนะนำ Emoji เช่น 🍎 🥬 🍖 ☕ 👕 หรือวาง URL รูปภาพ</small>
+          </div>
+
+          <div class="form-group" id="file-group" style="display: none;">
+            <label for="shop-icon-file">เลือกไฟล์รูปภาพ</label>
+            <input type="file" id="shop-icon-file" accept="image/*" />
+            <small>ระบบจะแปลงเป็น Base64 และย่อขนาดอัตโนมัติ (สูงสุดประมาณ 200KB)</small>
+            <div id="icon-preview" class="icon-preview" style="display: none;"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="shop-link">ลิงก์ร้านค้า *</label>
+            <input type="url" id="shop-link" placeholder="https://line.me/... หรือ https://facebook.com/..." required />
+            <small>ลิงก์ไปยัง Line OA, Facebook Page, เว็บไซต์ หรือเบอร์โทร (tel:08xxxxxxx)</small>
+          </div>
+
+          <div class="form-group">
+            <label for="shop-desc">รายละเอียดสั้น ๆ (ไม่บังคับ)</label>
+            <input type="text" id="shop-desc" placeholder="เช่น ขายผักสดจากสวน ทุกวัน" />
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submit-btn">เพิ่มร้านค้า</button>
+            <button type="button" class="btn btn-secondary" id="cancel-btn" style="display: none;">ยกเลิก</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="admin-list-section">
+        <div class="section-header">
+          <h2>ร้านค้าทั้งหมด (<span id="shop-count">0</span>)</h2>
+          <button type="button" class="btn btn-danger-outline" id="clear-all-btn">ล้างข้อมูลทั้งหมด</button>
+        </div>
+
+        <div id="admin-shop-list" class="admin-shop-list"></div>
+        <div id="admin-empty" class="empty-state" style="display: none;">
+          <p>ยังไม่มีร้านค้าในระบบ</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>ข้อมูลถูกเก็บใน Firebase Firestore</p>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+  <script type="module">
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.initAdminPage) window.initAdminPage();
+    });
+  </script>
+</body>
+</html>
