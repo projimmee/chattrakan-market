@@ -7,17 +7,18 @@
 
 :root {
   --primary: #e85d04;
-  --primary-dark: #d00000;
+  --primary-dark: #c2410c;
   --primary-light: #f48c06;
-  --bg: #fff8f0;
+  --bg: #fff9f2;
   --card-bg: #ffffff;
-  --text: #2b2d42;
-  --text-muted: #6c757d;
-  --border: #ffe0c2;
-  --success: #2d6a4f;
-  --danger: #c1121f;
-  --shadow: 0 4px 14px rgba(232, 93, 4, 0.12);
-  --radius: 16px;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #ffedd5;
+  --success: #15803d;
+  --danger: #b91c1c;
+  --shadow: 0 4px 20px rgba(232, 93, 4, 0.08);
+  --shadow-hover: 0 12px 32px rgba(232, 93, 4, 0.18);
+  --radius: 20px;
 }
 
 body {
@@ -28,21 +29,22 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
   width: 100%;
 }
 
 /* ===== Header ===== */
 .header {
-  background: linear-gradient(135deg, #e85d04, #f48c06);
+  background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%);
   color: white;
-  padding: 18px 0;
-  box-shadow: 0 4px 20px rgba(232, 93, 4, 0.25);
+  padding: 16px 0;
+  box-shadow: 0 4px 24px rgba(234, 88, 12, 0.25);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -52,42 +54,45 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .logo-icon {
-  font-size: 2.6rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  font-size: 2.5rem;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+  line-height: 1;
 }
 
 .logo h1 {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
 .logo p {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   opacity: 0.9;
   font-weight: 300;
+  margin-top: 1px;
 }
 
 .admin-btn {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.18);
   color: white;
-  padding: 10px 18px;
+  padding: 9px 16px;
   border-radius: 50px;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.2s;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.28);
   white-space: nowrap;
 }
 
@@ -99,69 +104,71 @@ body {
 /* ===== Main ===== */
 main {
   flex: 1;
-  padding: 30px 0 50px;
+  padding: 28px 0 48px;
 }
 
 .intro {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .intro h2 {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   color: var(--primary-dark);
   margin-bottom: 6px;
+  font-weight: 700;
 }
 
 .intro p {
   color: var(--text-muted);
-  font-size: 1rem;
+  font-size: 0.98rem;
 }
 
 /* ===== Shop Grid ===== */
 .shop-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .shop-card {
   background: var(--card-bg);
   border-radius: var(--radius);
-  padding: 28px 20px 24px;
+  padding: 26px 18px 22px;
   text-align: center;
   box-shadow: var(--shadow);
   border: 1px solid var(--border);
-  transition: all 0.25s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
   cursor: pointer;
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   position: relative;
   overflow: hidden;
 }
 
 .shop-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(232, 93, 4, 0.2);
-  border-color: var(--primary-light);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: #fdba74;
 }
 
 .shop-card .icon {
-  width: 110px;
-  height: 110px;
+  width: 108px;
+  height: 108px;
   border-radius: 50%;
-  background: linear-gradient(145deg, #fff3e6, #ffe8cc);
+  background: linear-gradient(145deg, #fff7ed, #ffedd5);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3.4rem;
+  font-size: 3.3rem;
   overflow: hidden;
-  border: 4px solid #ffd8a8;
-  box-shadow: 0 4px 12px rgba(232, 93, 4, 0.15);
+  border: 4px solid #fed7aa;
+  box-shadow: 0 6px 16px rgba(234, 88, 12, 0.12);
+  flex-shrink: 0;
 }
 
 .shop-card .icon img {
@@ -171,70 +178,84 @@ main {
 }
 
 .shop-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--text);
-  line-height: 1.3;
+  line-height: 1.35;
+  margin: 0;
 }
 
 .shop-card .desc {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
-  line-height: 1.4;
+  line-height: 1.45;
+  margin: 0;
 }
 
 .shop-card .visit-btn {
   margin-top: 4px;
-  background: var(--primary);
+  background: linear-gradient(135deg, #ea580c, #f59e0b);
   color: white;
-  padding: 10px 24px;
+  padding: 10px 22px;
   border-radius: 50px;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.25);
 }
 
 .shop-card:hover .visit-btn {
-  background: var(--primary-dark);
+  background: linear-gradient(135deg, #c2410c, #ea580c);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
 }
 
 /* ===== Empty State ===== */
 .empty-state {
   text-align: center;
-  padding: 60px 20px;
+  padding: 64px 20px;
   color: var(--text-muted);
+  background: white;
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+  margin-top: 8px;
 }
 
 .empty-icon {
-  font-size: 4rem;
-  margin-bottom: 16px;
-  opacity: 0.6;
+  font-size: 4.2rem;
+  margin-bottom: 14px;
+  opacity: 0.7;
 }
 
 .empty-state h3 {
   font-size: 1.3rem;
   margin-bottom: 8px;
   color: var(--text);
+  font-weight: 600;
 }
 
 .empty-state a {
   color: var(--primary);
   font-weight: 500;
+  text-decoration: none;
+}
+
+.empty-state a:hover {
+  text-decoration: underline;
 }
 
 /* ===== Footer ===== */
 .footer {
-  background: #2b2d42;
-  color: #adb5bd;
-  padding: 24px 0;
+  background: #1e293b;
+  color: #94a3b8;
+  padding: 22px 0;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 .footer-note {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   margin-top: 4px;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 /* ===== Admin Page ===== */
@@ -465,59 +486,66 @@ main {
 
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
+  .header {
+    padding: 12px 0;
+  }
   .logo h1 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
   .logo p {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
   .logo-icon {
-    font-size: 2rem;
+    font-size: 2.1rem;
   }
   .admin-btn {
     padding: 8px 14px;
     font-size: 0.85rem;
   }
-  .header {
-    padding: 14px 0;
-  }
   main {
-    padding: 20px 0 40px;
+    padding: 20px 0 36px;
   }
   .intro {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   .intro h2 {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
+  }
+  .intro p {
+    font-size: 0.9rem;
   }
   .shop-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    gap: 12px;
   }
   .shop-card {
-    padding: 18px 12px 16px;
-    gap: 10px;
-    border-radius: 14px;
+    padding: 16px 10px 14px;
+    gap: 8px;
+    border-radius: 16px;
   }
   .shop-card .icon {
-    width: 88px;
-    height: 88px;
-    font-size: 2.8rem;
+    width: 86px;
+    height: 86px;
+    font-size: 2.7rem;
     border-width: 3px;
   }
   .shop-card h3 {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.3;
   }
   .shop-card .desc {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
   .shop-card .visit-btn {
-    padding: 8px 16px;
-    font-size: 0.85rem;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+  .empty-state {
+    padding: 48px 16px;
   }
   .admin-shop-item {
     flex-wrap: wrap;
